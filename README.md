@@ -1,4 +1,4 @@
-# Wireless Pose Camera
+# MayFly - Wireless Pose Camera
 
 
 ## Build command on Linux
@@ -12,10 +12,10 @@ $ cmake --build build_reldbg
 $ mkdir build
 $ cd build
 $ cmake -DCMAKE_GENERATOR_PLATFORM=x64 ..
-$ Open picam.sln project in Visual Studio 17 2022 and build
+$ Open mayfly.sln project in Visual Studio 17 2022 and build
 ```
 
 ## Install python package
 ```
-$ pip install 'git+ssh://git@github.com/MayFly-AI/picam.git'
+$ pip install 'git+ssh://git@github.com/MayFly-AI/mayfly.git'
 ```
