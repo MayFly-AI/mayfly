@@ -1,0 +1,17 @@
+{
+    "id":"example_client",
+    "services":[
+        {
+            "type":"sensorClient",
+            "id":"pcap_transfer_client",
+            "decoder":{
+                "type":"openh264"
+            },
+            "transfer":{
+                "protocol":"pcap",
+                "bind":"1.1",
+                "dest":"2.0"
+            }
+        }
+    ]
+}

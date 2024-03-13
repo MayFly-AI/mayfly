@@ -1,0 +1,25 @@
+# notes for creating and installing deb package
+
+# copy files into pkg tree
+FILES="hello"
+cp -pvr ${FILES} mayfly_0.0.1-1_amd64/usr/bin/
+
+# create pkg and install
+dpkg -b mayfly_0.0.1-1_amd64/
+#sudo apt install -f mayfly_0.0.1-1_amd64.deb 
+dpkg --contents mayfly_0.0.1-1_amd64.deb
+sudo dpkg -i mayfly_0.0.1-1_amd64.deb 
+
+# check status
+systemctl status mayfly.service
+journalctl -f
+journalctl -xe
+tail -f  /var/log/mayfly.out 
+ps uxa | grep ^mayfly
+
+# cleanup 
+sudo apt remove mayfly
+sudo deluser mayfly
+sudo delgroup mayfly
+
+

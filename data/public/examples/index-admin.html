@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="">
+		<link rel="icon" type="image/x-icon" href="mayfly.ico">
+		<title>Picam v0.1</title>
+		<link href="../components/bootstrap-5.2.2-dist/css/bootstrap.min.css" rel="stylesheet">
+
+		<style>
+			.bd-placeholder-img {
+				font-size: 1.125rem;
+				text-anchor: middle;
+				-webkit-user-select: none;
+				-moz-user-select: none;
+				user-select: none;
+			}
+
+			@media (min-width: 768px) {
+				.bd-placeholder-img-lg {
+					font-size: 3.5rem;
+				}
+			}
+
+			.b-example-divider {
+				height: 3rem;
+				background-color: rgba(0, 0, 0, .1);
+				border: solid rgba(0, 0, 0, .15);
+				border-width: 1px 0;
+				box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+			}
+
+			.b-example-vr {
+				flex-shrink: 0;
+				width: 1.5rem;
+				height: 100vh;
+			}
+
+			.bi {
+				vertical-align: -.125em;
+				fill: currentColor;
+			}
+
+			.nav-scroller {
+				position: relative;
+				z-index: 2;
+				height: 2.75rem;
+				overflow-y: hidden;
+			}
+
+			.nav-scroller .nav {
+				display: flex;
+				flex-wrap: nowrap;
+				padding-bottom: 1rem;
+				margin-top: -1px;
+				overflow-x: auto;
+				text-align: center;
+				white-space: nowrap;
+				-webkit-overflow-scrolling: touch;
+			}
+
+		</style>  
+		<!-- Custom styles for this template -->
+
+		<link href="offcanvas.css" rel="stylesheet">
+		</head>
+	<body>
+		<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark" aria-label="Main navigation">
+			<div class="container-fluid">
+				<a class="navbar-brand" href="#">
+					<img src="logo-mayfly-horz.svg" height="36px"></img>
+				</a>
+				<button class="navbar-toggler p-0 border-0" type="button" id="navbarSideCollapse" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+
+				<div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
+					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+						<li class="nav-item">
+							<a class="nav-link active" aria-current="page" href="#">Dashboard</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#">Notifications</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#">Profile</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#">Switch account</a>
+						</li>
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false">Settings</a>
+							<ul class="dropdown-menu" aria-labelledby="dropdown01">
+							<li><a class="dropdown-item" href="#">Action</a></li>
+							<li><a class="dropdown-item" href="#">Another action</a></li>
+							<li><a class="dropdown-item" href="#">Something else here</a></li>
+							</ul>
+						</li>
+					</ul>
+					<form class="d-flex">
+						<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+						<button class="btn btn-outline-success" type="submit">Search</button>
+					</form>
+				</div>
+			</div>
+		</nav>
+    
+		<main class="container">
+			<div class="d-flex align-items-center p-3 my-3 text-white bg-purple rounded shadow-sm">
+
+					<!--showstatusdiv-->
+					<div id='showstatusdiv' style="display:none">
+						<div class="table-responsive">
+							<table class="table table-striped table-sm">
+								<tbody>
+									<p id="serverstatus"></p>
+								</tbody>
+							</table>
+						</div>
+						<div id='charts'></div>
+					</div>
+					<!--showstatusdiv-->
+
+
+
+			</div>
+		</main>
+
+	<div id='hideblock' style="display:none">
+
+		<div class="container-fluid">
+			<div class="row">
+				<nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+					<div class="position-sticky pt-3 sidebar-sticky">
+						<ul class="nav flex-column">
+							<li class="nav-item" onclick="ShowView('status');">
+								<a class="nav-link active" aria-current="page" href="#">
+									<span data-feather="home" class="align-text-bottom"></span>
+									Status
+								</a>
+							</li>
+							<li class="nav-item" onclick="ShowView('properties');">
+								<a class="nav-link" href="#">
+									<span data-feather="file" class="align-text-bottom"></span>
+									Properties
+								</a>
+							</li>
+						</ul>
+					</div>
+				</nav>
+
+				<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+					<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+						<h1 class="h2">Staus</h1>
+					</div>
+
+					<!--showpropsdiv-->
+					<div id='showpropsdiv' style="display:none">
+						<h2>Properties</h2>
+						<div class="table-responsive">
+							<table class="table table-striped table-sm">
+								<tbody>
+									<p id="serverprops"></p>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<!--showpropsdiv-->
+
+				</main>
+
+
+			</div>
+		</div>
+	</div>
+
+		<script src="../components/jquery/dist/jquery.min.js"></script>
+		<script src="../components/bootstrap-5.2.2-dist/js/bootstrap.bundle.min.js"></script>
+		<script src="../components/feather-icons-4.28.0/dist/feather.min.js"></script>
+
+		<script src="../components/chart-3.9.1/dist/chart.min.js"></script>
+
+		<script src="../components/date-fns/1.9.0/date_fns.min.js"></script>
+		<script src="../components/chartjs-adapter-date-fns/2.0.1/chartjs-adapter-date-fns.min.js"></script>
+
+		<script src="../shared.js"></script>
+		<script src="../picam.js"></script>
+		<script>
+			$(".nav .nav-link").on("click",function(){
+				$(".nav").find(".active").removeClass("active");
+				$(this).addClass("active");
+			});
+			var prevViewName;
+			function ShowView(viewName) {
+				console.log("ShowView "+viewName);
+				let status=document.getElementById("showstatusdiv");
+				let props=document.getElementById("showpropsdiv");
+				status.style.display="none";
+				props.style.display="none";
+				switch(prevViewName) {
+					case "status": {
+						EndStatus();
+						break;
+					};
+					case "properties": {
+						EndProperties();
+						break;
+					};
+				}
+				switch(viewName) {
+					case "status": {
+						BeginStatus();
+						status.style.display="block";
+						break;
+					};
+					case "properties": {
+						BeginProperties();
+						props.style.display="block";
+						break;
+					};
+				}
+				prevViewName=viewName;
+			}
+
+			g_pushMessagesNotify=[];
+			function AddPushMessageCallback(key,func) {
+				g_pushMessagesNotify[key]=func;
+			}
+			function RemovePushMessageCallback(key) {
+				delete g_pushMessagesNotify[key];
+			}
+			function CallPushMessageCallbacks(json) {
+				for(const [key,func] of Object.entries(g_pushMessagesNotify)) {
+					func(json);
+				}
+			}
+
+			var connection=new WebSocket('ws://'+window.location.host);
+			connection.binaryType='arraybuffer';
+			connection.onopen=function () {
+				console.log('WebSocket open');
+			};
+			connection.onerror=function (error) {
+				clearInterval(keepaliveHandle);
+				console.log('WebSocket error:' + error);
+			};
+			connection.onclose=function () {
+				clearInterval(keepaliveHandle);
+				console.log('WebSocket close');
+			};
+			function keepalive() {
+				connection.send(JSON.stringify({ requestdata: true }));
+			}
+
+			connection.onmessage=function (e) {
+				var jsonMsg=new Uint8Array(e.data);
+				var jsonString=bin2String(jsonMsg,0,jsonMsg.byteLength);
+				var json=JSON.parse(jsonString);
+
+				SetStatus(json);
+
+			};
+			var keepaliveHandle=setInterval(keepalive,500);
+			ShowView('status');
+		</script>
+	</body>
+</html>

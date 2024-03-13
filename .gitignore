@@ -1,0 +1,16 @@
+.idea/
+.gdb_history
+CMakeListsUser.txt
+imgui.ini
+out/
+env/
+build/
+/build*
+.vs/
+.vscode/
+.gdbhistory
+tags
+# Python stuff
+*.egg
+*.egg-info/
+*.pyc

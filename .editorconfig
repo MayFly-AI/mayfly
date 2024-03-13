@@ -1,0 +1,21 @@
+root=true
+
+[*.{cpp,c,h,cu,js,html,txt,inc}]
+indent_size=4
+indent_style=tab
+
+[*.py]
+indent_size = 4
+indent_style = space
+
+[*]
+end_of_line=lf
+insert_final_newline=true
+trim_trailing_whitespace=true
+
+[3rdparty/**]
+indent_size=unset
+indent_style=unset
+trim_trailing_whitespace=unset
+end_of_line=unset
+insert_final_newline=unset

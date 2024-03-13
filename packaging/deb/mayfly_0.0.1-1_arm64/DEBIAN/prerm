@@ -1,0 +1,2 @@
+systemctl stop mayfly
+systemctl disable mayfly

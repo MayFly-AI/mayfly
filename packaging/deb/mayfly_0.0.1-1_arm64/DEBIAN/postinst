@@ -1,0 +1,34 @@
+#!/bin/sh
+# postinst script for mayfly
+
+set -e
+
+case "$1" in
+  configure)
+    if ! getent passwd mayfly >/dev/null; then
+      adduser --disabled-password  --quiet --system \
+        --home /var/lib/mayfly --gecos "MayFly" --group mayfly
+      usermod -a -G gpio,spi,i2c,video mayfly
+    fi
+
+    if [ -x "/etc/init.d/dbus" ]; then
+      invoke-rc.d dbus force-reload || true
+    fi
+  ;;
+  abort-upgrade|abort-remove|abort-deconfigure)
+  ;;
+  *)
+    echo "postinst called with unknown argument \`$1'" >&2
+    exit 1
+  ;;
+esac
+
+sudo setcap cap_net_raw,cap_net_admin=eip /usr/bin/llssm
+chown mayfly -R /etc/mayfly
+mkdir -p /var/log/mayfly/
+chown mayfly -R /var/log/mayfly
+
+systemctl enable mayfly
+systemctl start mayfly
+
+

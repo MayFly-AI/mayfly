@@ -1,0 +1,27 @@
+{
+    "id":"pi_other_camera",
+    "services":[
+        {
+            "type":"sensorServer",
+            "id":"camera_server_2",
+            "errorCorrection":{
+                "type":"arq"
+            },
+            "transfer":{
+                "protocol":"udp",
+                "bindAddress":{
+                    "ip":"0.0.0.0",
+                    "port":8999
+                }
+            },
+            "sources":[
+                {
+                    "type":"camera",
+                    "id":3,
+                    "clock":30,
+                    "mode":"640x480"
+                }
+            ]
+        }
+    ]
+}

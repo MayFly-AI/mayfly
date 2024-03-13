@@ -1,0 +1,28 @@
+add_subdirectory(camera)
+add_subdirectory(clock)
+add_subdirectory(defaultclock)
+add_subdirectory(files)
+add_subdirectory(imu)
+add_subdirectory(proxy)
+add_subdirectory(ranging)
+add_subdirectory(status)
+add_subdirectory(synccameramaster)
+add_subdirectory(tof)
+add_subdirectory(tag)
+add_subdirectory(magnetometer)
+
+set(ALL_DATASOURCE_LIBS
+	datasource_camera
+	datasource_clock
+	datasource_defaultclock
+	datasource_files
+	datasource_imu
+	datasource_proxy
+	datasource_ranging
+	datasource_status
+	datasource_synccameramaster
+	datasource_tof
+	datasource_tag
+	datasource_mag
+	PARENT_SCOPE
+)

@@ -1,0 +1,13 @@
+[Unit]
+Description=MayFly AI Service
+After=multi-user.target
+
+[Service]
+Type=simple
+User=mayfly
+ExecStart=/usr/bin/mayfly_wrapper.sh
+#StandardOutput=file:/var/log/mayfly.out
+#StandardError=file:/var/log/mayfly.err
+
+[Install]
+WantedBy=multi-user.target

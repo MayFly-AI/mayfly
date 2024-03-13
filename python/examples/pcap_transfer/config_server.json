@@ -1,0 +1,25 @@
+{
+    "id":"example_server",
+    "services":[
+        {
+            "type":"sensorServer",
+            "id":"pcap_transfer",
+            "errorCorrection":{
+                "type":"fec"
+            },
+            "transfer":{
+                "protocol":"pcap",
+                "bind":"2.0",
+                "dest":"1.255"
+            },
+            "sources":[
+                {
+                    "id":1,
+                    "clock":30,
+                    "mode":"640x480",
+                    "type":"camera"
+                }
+            ]
+        }
+    ]
+}

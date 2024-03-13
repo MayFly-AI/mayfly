@@ -1,0 +1,7 @@
+Package: mayfly
+Version: 0.0.1
+Maintainer: MayFly AI Aps <contact@mayfly.dk>
+Depends: libc6
+Architecture: arm64
+Homepage: https://mayfly.dk
+Description: Executable for SensorLeap
